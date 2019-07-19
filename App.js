@@ -5,6 +5,7 @@ import Map from "./components/map/Map";
 import WalkPage from "./components/Layout/WalkPage";
 const App = () => {
   useEffect(() => {}, []);
+
   return (
     <View style={styles.container}>
       <WalkPage />
