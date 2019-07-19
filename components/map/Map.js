@@ -6,9 +6,9 @@ import { Text, View } from "react-native";
 import WalkPage from "../Layout/WalkPage";
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
-const LATITUDE = 33.8;
-const LONGITUDE = -151.17;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE = -33.790131;
+const LONGITUDE = -33.790131;
+const LATITUDE_DELTA = 1;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 const GOOGLE_MAPS_APIKEY = "AIzaSyCFzbD_10mMJU7AC7lStxIKSddM4yEAVwE";
@@ -17,7 +17,7 @@ class Map extends Component {
   constructor(props) {
     super(props);
 
-    // AirBnB's Office, and Apple Park
+    // Hard Coded Route
     this.state = {
       distance: "",
       coordinates: [
@@ -27,7 +27,7 @@ class Map extends Component {
         },
         {
           latitude: -33.795645,
-          longitude: 151.185221
+          longitude: 151.18531
         },
         {
           latitude: -33.790399,
@@ -38,7 +38,7 @@ class Map extends Component {
 
     this.mapView = null;
   }
-
+  //Setting new path
   onMapPress = e => {
     this.setState({
       coordinates: [...this.state.coordinates, e.nativeEvent.coordinate]
