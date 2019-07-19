@@ -7,8 +7,8 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.03;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const GOOGLE_API_KEY = "AIzaSyCFzbD_10mMJU7AC7lStxIKSddM4yEAVwE";
-let lat = 0;
-let lng = 0;
+// let lat = 0;
+// let lng = 0;
 
 const Map = props => {
   // Hard Coded Route
@@ -45,7 +45,7 @@ const Map = props => {
       setCoordinates([]);
     }
   };
-
+  //State is not set in time to provide dynamic coords to the initial region
   return (
     <MapView
       initialRegion={{
