@@ -5,14 +5,15 @@ const EndWalk = () => {
   return (
     <Button
       style={{
-        color: "white",
-        width: "100%",
-        height: 50,
-        paddingTop: 10,
         position: "absolute",
-        bottom: 0
+        left: 10,
+        bottom: 10,
+        paddingTop: 10,
+        borderRadius: 100,
+        backgroundColor: "#fb9120",
+        width: "95%",
+        height: 60
       }}
-      color="#fb9120"
       mode="contained"
       onPress={() => console.log("Pressed")}
     >

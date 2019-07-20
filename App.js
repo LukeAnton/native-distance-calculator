@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/buttons/EndWalk";
 import Map from "./components/map/Map";
 import WalkPage from "./components/Layout/WalkPage";
+import WalkForm from "./components/forms/WalkForm";
 const App = () => {
   useEffect(() => {}, []);
 
@@ -11,6 +12,7 @@ const App = () => {
       <WalkPage />
       <Map />
       <Button />
+      <WalkForm />
     </View>
   );
 };

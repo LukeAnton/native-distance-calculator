@@ -20,24 +20,24 @@ const Map = props => {
   let mapView = 0;
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      //Will give you the current location
-      position => {
-        //setting latitude to state
-        setLatitude(position.coords.latitude);
-        lat = position.coords.latitude;
-        //setting longitude to state
-        setLongitude(position.coords.longitude);
-        lng = position.coords.longitude;
-      },
-      error => alert(error.message),
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000
-      }
-    );
-  }, [latitude, longitude]);
+    // navigator.geolocation.getCurrentPosition(
+    //   //Will give you the current location
+    //   position => {
+    //     //setting latitude to state
+    //     setLatitude(position.coords.latitude);
+    //     //setting longitude to state
+    //     setLongitude(position.coords.longitude);
+    //   },
+    //   error => alert(error.message),
+    //   {
+    //     enableHighAccuracy: true,
+    //     timeout: null
+    //   }
+    // );
+    console.log(`Distance: ${distance} km`);
+    console.log(`Duration: ${duration} min.`);
+  }, [latitude, longitude, distance, duration]);
+
   //TODO - Max out markers
   onMapPress = e => {
     setCoordinates([...coordinates, e.nativeEvent.coordinate]);
@@ -65,7 +65,7 @@ const Map = props => {
         origin={coordinates[0]}
         destination={coordinates[1]}
         optimizeWaypoints={true}
-        strokeWidth={10}
+        strokeWidth={5}
         strokeColor="black"
         apikey={GOOGLE_API_KEY}
         onStart={params => {
@@ -78,16 +78,19 @@ const Map = props => {
         onReady={result => {
           setDistance(result.distance);
           setDuration(result.duration);
-          console.log(`Distance: ${result.distance} km`);
-          console.log(`Duration: ${result.duration} min.`);
-          mapView.fitToCoordinates(result.coordinates, {
-            edgePadding: {
-              right: width / 20,
-              bottom: height / 20,
-              left: width / 20,
-              top: height / 20
-            }
-          });
+          // console.log(`Distance: ${result.distance} km`);
+          // console.log(`Duration: ${result.duration} min.`);
+          setTimeout(() => {
+            mapView.fitToCoordinates(coordinates, {
+              edgePadding: {
+                right: width / 20,
+                bottom: height / 20,
+                left: width / 20,
+                top: height / 20
+              }
+            });
+          }, 999999999999);
+          2;
         }}
         onError={errorMessage => {
           console.log("Map Error");
