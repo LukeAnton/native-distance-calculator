@@ -2,6 +2,8 @@ import React, { Component, Fragment, useState, useEffect } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
+import Values from "../values/Values";
+
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.03;
@@ -14,7 +16,7 @@ const Map = props => {
   // Hard Coded Route
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
-  const [distance, setDistance] = useState(0);
+  const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState(0);
   const [coordinates, setCoordinates] = useState([]);
   let mapView = 0;
@@ -76,7 +78,7 @@ const Map = props => {
           );
         }}
         onReady={result => {
-          setDistance(result.distance);
+          setDistance(result.distance.toString());
           setDuration(result.duration);
           // console.log(`Distance: ${result.distance} km`);
           // console.log(`Duration: ${result.duration} min.`);
@@ -96,6 +98,7 @@ const Map = props => {
           console.log("Map Error");
         }}
       />
+      <Values distance={distance} duration={duration} />
     </MapView>
   );
 };

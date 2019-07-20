@@ -8,10 +8,11 @@ import {
   Provider
 } from "react-native-paper";
 
-const WalkForm = () => {
+const WalkForm = ({ distance }) => {
   const [visible, setVisible] = useState(false);
   const [qty, setQty] = useState("");
   const dogAmount = parseInt(qty);
+  console.log(typeof distance);
 
   _showModal = () => setVisible(true);
   _hideModal = () => setVisible(false);
@@ -27,7 +28,26 @@ const WalkForm = () => {
         }}
       >
         <Modal visible={visible} onDismiss={_hideModal}>
-          <Text>FORM</Text>
+          <Text>{distance}</Text>
+
+          <TextInput
+            mode="flat"
+            type="text"
+            label="Walk Distance...."
+            underlineColor="white"
+            value={qty}
+            style={{ backgroundColor: "white", opacity: ".9" }}
+            onChangeText={qty => setQty(qty)}
+          />
+          <TextInput
+            mode="flat"
+            type="number"
+            label="Walk Duration..."
+            underlineColor="white"
+            value={qty}
+            style={{ backgroundColor: "white", opacity: ".9" }}
+            onChangeText={qty => setQty(qty)}
+          />
           <TextInput
             mode="flat"
             type="number"
