@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import Input from "./Input";
 import {
   TextInput,
   Modal,
@@ -8,95 +9,11 @@ import {
   Provider
 } from "react-native-paper";
 
-const WalkForm = ({ distance }) => {
-  const [visible, setVisible] = useState(false);
-  const [qty, setQty] = useState("");
-  const dogAmount = parseInt(qty);
-  console.log(typeof distance);
-
-  _showModal = () => setVisible(true);
-  _hideModal = () => setVisible(false);
-  console.log(qty);
+const WalkForm = () => {
   return (
-    <Provider>
-      <Portal
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#fffff"
-        }}
-      >
-        <Modal visible={visible} onDismiss={_hideModal}>
-          <Text>{distance}</Text>
-
-          <TextInput
-            mode="flat"
-            type="text"
-            label="Walk Distance...."
-            underlineColor="white"
-            value={qty}
-            style={{ backgroundColor: "white", opacity: ".9" }}
-            onChangeText={qty => setQty(qty)}
-          />
-          <TextInput
-            mode="flat"
-            type="number"
-            label="Walk Duration..."
-            underlineColor="white"
-            value={qty}
-            style={{ backgroundColor: "white", opacity: ".9" }}
-            onChangeText={qty => setQty(qty)}
-          />
-          <TextInput
-            mode="flat"
-            type="number"
-            label="How many dogs?..."
-            underlineColor="white"
-            value={qty}
-            style={{ backgroundColor: "white", opacity: ".9" }}
-            onChangeText={qty => setQty(qty)}
-          />
-        </Modal>
-        {visible === true ? (
-          <Button
-            icon="clear"
-            size={10}
-            mode="contained"
-            onPress={_hideModal}
-            style={{
-              position: "absolute",
-              bottom: 78,
-              left: 10,
-              paddingTop: 10,
-              paddingLeft: 15,
-              height: 50,
-              width: 50,
-              borderRadius: 100,
-              backgroundColor: "#fb9120"
-            }}
-          />
-        ) : (
-          <Button
-            icon="add"
-            size={10}
-            mode="contained"
-            onPress={_showModal}
-            style={{
-              position: "absolute",
-              bottom: 78,
-              left: 10,
-              paddingTop: 10,
-              paddingLeft: 15,
-              height: 50,
-              width: 50,
-              borderRadius: 100,
-              backgroundColor: "#fb9120"
-            }}
-          />
-        )}
-      </Portal>
-    </Provider>
+    <Fragment>
+      <Input />
+    </Fragment>
   );
 };
 

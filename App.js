@@ -4,6 +4,7 @@ import Button from "./components/buttons/EndWalk";
 import Map from "./components/map/Map";
 import WalkPage from "./components/Layout/WalkPage";
 import WalkForm from "./components/forms/WalkForm";
+import UserAvatar from "./components/user/UserAvatar";
 const App = () => {
   useEffect(() => {}, []);
 
@@ -11,6 +12,7 @@ const App = () => {
     <View style={styles.container}>
       <WalkPage />
       <Map />
+      <UserAvatar />
       <Button />
       <WalkForm />
     </View>

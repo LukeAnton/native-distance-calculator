@@ -14,7 +14,9 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-maps-directions": "^1.7.0",
     "react-native-paper": "^2.16.0",
-    "react-native-web": "^0.11.4"
+    "react-native-uuid": "^1.4.9",
+    "react-native-web": "^0.11.4",
+    "react-uuid": "^1.0.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.1"
