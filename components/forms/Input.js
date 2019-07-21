@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import uuid from "react-uuid";
 import { ScrollView, AsyncStorage } from "react-native";
 import WalkSummary from "./WalkSummary";
 import {
@@ -22,9 +21,12 @@ const Input = ({ distance }) => {
   const [stop, setStop] = useState("");
   const [data, setData] = useState({
     noteSub: "",
-    distSub: ""
+    distSub: "",
+    durSub: "",
+    stopSub: "",
+    qtySub: ""
   });
-  const { noteSub, distSub } = useState;
+  const { noteSub, distSub, durSub, stopSub, qtySub } = useState;
 
   let dogAmount = parseInt(qty);
   let drop = [];
@@ -38,16 +40,32 @@ const Input = ({ distance }) => {
   hideWalkMod = () => {
     setFormVisible(false), _hideModal();
   };
+
   const saveData = () => {
-    AsyncStorage.setItem("hello", JSON.stringify(note));
+    AsyncStorage.setItem("distance", JSON.stringify(dist));
+    AsyncStorage.setItem("note", JSON.stringify(note));
+    AsyncStorage.setItem("duration", JSON.stringify(dur));
+    AsyncStorage.setItem("stopSub", JSON.stringify(stop));
+    AsyncStorage.setItem("quantity", JSON.stringify(qty));
+    alert("Saved");
   };
 
   const displayData = async () => {
     try {
-      let noteS = await AsyncStorage.getItem("hello");
+      let distS = await AsyncStorage.getItem("distance");
+      let noteS = await AsyncStorage.getItem("note");
+      let durS = await AsyncStorage.getItem("duration");
+      let stopS = await AsyncStorage.getItem("stopSub");
+      let qtyS = await AsyncStorage.getItem("quantity");
+      setData({
+        noteSub: noteS,
+        distSub: distS,
+        durSub: durS,
+        stopSub: stopS,
+        qtySub: qtyS
+      });
       _showModal();
       setFormVisible(true);
-      setData({ noteSub: noteS });
     } catch (error) {
       alert(error);
     }
@@ -82,7 +100,7 @@ const Input = ({ distance }) => {
               />
               <TextInput
                 mode="flat"
-                type="text"
+                keyboardType="numeric"
                 label="Walk Distance...."
                 underlineColor="white"
                 value={dist}
@@ -91,7 +109,7 @@ const Input = ({ distance }) => {
               />
               <TextInput
                 mode="flat"
-                type="number"
+                keyboardType="numeric"
                 label="Walk Duration..."
                 underlineColor="white"
                 value={dur}
@@ -100,19 +118,18 @@ const Input = ({ distance }) => {
               />
               <TextInput
                 mode="flat"
-                type="number"
+                type="text"
                 label="Notes..."
                 underlineColor="white"
                 value={note}
                 style={{ backgroundColor: "white", opacity: ".9" }}
                 onChangeText={note => setNote(note)}
               />
-              {drop.map(dog =>
+              {/* {drop.map(dog =>
                 drop.length > 5 ? (
                   (dog = null)
                 ) : (
                   <TextInput
-                    key={uuid(dog)}
                     mode="flat"
                     type="number"
                     label={`Dog ${dog} Stops`}
@@ -122,7 +139,16 @@ const Input = ({ distance }) => {
                     onChangeText={stop => setStop(stop)}
                   />
                 )
-              )}
+              )} */}
+              <TextInput
+                mode="flat"
+                type="number"
+                label="Stop"
+                underlineColor="white"
+                value={stop}
+                style={{ backgroundColor: "white", opacity: ".9" }}
+                onChangeText={stop => setStop(stop)}
+              />
             </ScrollView>
             <Button
               size={10}

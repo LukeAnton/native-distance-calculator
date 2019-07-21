@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import Avatar from "../user/UserAvatar";
+
 import {
   View,
   Modal,
@@ -7,16 +7,20 @@ import {
   Text,
   Button,
   Provider,
-  TextInput
+  TextInput,
+  Card,
+  Title,
+  Paragraph,
+  Avatar,
+  IconButton
 } from "react-native-paper";
 import EndWalk from "../buttons/EndWalk";
-const WalkSummary = ({ data, displayData, hideWalkMod }) => {
+const WalkSummary = ({ data }) => {
   const [visible, setVisible] = useState(false);
 
   _showModal = () => setVisible(true);
   _hideModal = () => setVisible(false);
-  const { noteSub } = data;
-  console.log(noteSub);
+  const { noteSub, distSub, durSub, stopSub, qtySub } = data;
 
   return (
     <Provider>
@@ -29,14 +33,32 @@ const WalkSummary = ({ data, displayData, hideWalkMod }) => {
         }}
       >
         <Modal visible={visible} onDismiss={_hideModal}>
-          <Text
-            style={{
-              backgroundColor: "white",
-              height: "auto"
-            }}
-          >
-            {noteSub}kadkjsakdjasksdjksjdkjaskdj
-          </Text>
+          <Card>
+            <Card.Content style={{ backgroundColor: "#f1f1f1", height: 100 }}>
+              <Card.Title
+                title="Walk Summary"
+                subtitle={`${distSub} km | ${durSub} mins`}
+                left={props => (
+                  <Avatar.Image
+                    {...props}
+                    source={require("../../assets/avatar.png")}
+                  />
+                )}
+                right={props => (
+                  <IconButton {...props} icon="more-vert" onPress={() => {}} />
+                )}
+              />
+            </Card.Content>
+            <Card.Content style={{ height: 100 }}>
+              <Title>Walk Notes</Title>
+              <Paragraph>{noteSub}</Paragraph>
+            </Card.Content>
+
+            <Card.Content style={{ backgroundColor: "#f1f1f1", height: 100 }}>
+              <Title>Toilet Stops</Title>
+              <Paragraph>{stopSub}</Paragraph>
+            </Card.Content>
+          </Card>
         </Modal>
       </Portal>
     </Provider>

@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import Values from "../values/Values";
+import Input from "../forms/Input";
 
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
@@ -36,8 +37,8 @@ const Map = props => {
     //     timeout: null
     //   }
     // );
-    console.log(`Distance: ${distance} km`);
-    console.log(`Duration: ${duration} min.`);
+    // console.log(`Distance: ${distance} km`);
+    // console.log(`Duration: ${duration} min.`);
   }, [latitude, longitude, distance, duration]);
 
   //TODO - Max out markers
@@ -73,11 +74,11 @@ const Map = props => {
         strokeColor="black"
         apikey={GOOGLE_API_KEY}
         onStart={params => {
-          console.log(
-            `Started routing between "${params.origin}" and "${
-              params.destination
-            }"`
-          );
+          // console.log(
+          //   `Started routing between "${params.origin}" and "${
+          //     params.destination
+          //   }"`
+          // );
         }}
         onReady={result => {
           setDistance(result.distance.toString());
