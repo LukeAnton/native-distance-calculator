@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Button from "./components/buttons/EndWalk";
 import Map from "./components/map/Map";
 import WalkPage from "./components/Layout/WalkPage";
 import WalkForm from "./components/forms/WalkForm";
+import WalkSummary from "./components/forms/WalkSummary";
 import UserAvatar from "./components/user/UserAvatar";
-const App = () => {
+const App = ({}) => {
   useEffect(() => {}, []);
 
   return (
@@ -13,7 +13,6 @@ const App = () => {
       <WalkPage />
       <Map />
       <UserAvatar />
-      <Button />
       <WalkForm />
     </View>
   );

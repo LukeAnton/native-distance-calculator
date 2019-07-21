@@ -63,7 +63,9 @@ const Map = props => {
       {coordinates.map((coordinate, index) => (
         <MapView.Marker key={`coordinate_${index}`} coordinate={coordinate} />
       ))}
+
       <MapViewDirections
+        mode="WALKING"
         origin={coordinates[0]}
         destination={coordinates[1]}
         optimizeWaypoints={true}
