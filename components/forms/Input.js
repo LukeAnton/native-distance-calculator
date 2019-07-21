@@ -91,7 +91,7 @@ const Input = ({ distance }) => {
             <ScrollView>
               <TextInput
                 mode="flat"
-                type="number"
+                keyboardType="numeric"
                 label="Multiple Dogs?.... "
                 underlineColor="white"
                 value={qty}
